@@ -10,20 +10,20 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
 
     public CocoSalesCalculatorGUI(){
 
-        super("",0,0,"",0,0);
+        super("",0,0,"",0, 0);
 
 
         JFrame frame = new JFrame();
         frame.setTitle("Coco Daily Sales Calculator");
-        frame.setSize(796,761);
+        frame.setSize(1154,761);
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
         frame.getContentPane().setBackground(new Color(255,255,255));
-        frame.setResizable(false);
+        frame.setResizable(true);
 
         //PANEL FOR HEADER
         JPanel panel = new JPanel();
-        panel.setSize(796,90);
+        panel.setSize(1154,90);
         panel.setBackground(new Color(0,0,0));
         panel.setLayout(null);
 
@@ -136,14 +136,10 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         inputHours.setBackground(new Color(217,217,217));
         inputHours.setBorder(null);
 
-        // TOTALS CALCULATIONS
-        JPanel totalsPanel = new JPanel();
-        totalsPanel.setBackground(Color.BLACK);
-        totalsPanel.setBounds(420,125,320,200);
 
         //CALCULATE BUTTON
         JButton calculateButton = new JButton();
-        calculateButton.setText("CALCULATE");
+        calculateButton.setText("Calculate Total Sales");
         calculateButton.setFont(new Font("Helvetica", Font.PLAIN,36));
         calculateButton.setBounds(20,630,355,70);
         calculateButton.setBorder(new LineBorder(Color.blue));
@@ -177,7 +173,6 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
 
         });
         // ADD COMPONENTS TO THE FRAME
-        frame.add(totalsPanel);
         frame.add(resetButton);
         frame.add(calculateButton);
         frame.add(inputPhoneName);
