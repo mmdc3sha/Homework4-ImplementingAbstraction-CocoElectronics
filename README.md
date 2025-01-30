@@ -4,3 +4,6 @@
     Course: Object-Oriented Programming
     title: Daily Sales Calculations
     HOMEWORK 4: IMPLEMENTING ABSTRACTION IN JAVA
+
+    Note:
+    cocoDev21 << MY PERSONAL ACCOUNT
