@@ -15,7 +15,7 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
 
         JFrame frame = new JFrame();
         frame.setTitle("Coco Daily Sales Calculator");
-        frame.setSize(1154,761);
+        frame.setSize(1154,800);
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
         frame.getContentPane().setBackground(new Color(255,255,255));
@@ -49,7 +49,7 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
 
         //---- Labels for the TextFields---
         //Assigned Font for Each Label:
-        Font fontLabel = new Font("Helvetica", Font.PLAIN,20);
+        Font fontLabel = new Font("Monospaced", Font.PLAIN,20);
         JLabel phoneNameLabel = new JLabel();
         phoneNameLabel.setText("Phone Name:");
         phoneNameLabel.setBounds(20,115,138,25);
@@ -58,32 +58,32 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
 
         JLabel priceLabel = new JLabel();
         priceLabel.setText("Price:");
-        priceLabel.setBounds(20,193,138,25);
+        priceLabel.setBounds(20,193,158,25);
         priceLabel.setFont(fontLabel);
         phoneNameLabel.setForeground(Color.black);
 
         JLabel quantityLabel = new JLabel();
         quantityLabel.setText("Quantity Sold:");
-        quantityLabel.setBounds(20,274,138,25);
+        quantityLabel.setBounds(20,274,200,25);
         quantityLabel.setFont(fontLabel);
         quantityLabel.setForeground(Color.black);
 
         JLabel serviceNameLabel = new JLabel();
         serviceNameLabel.setText("Service Name:");
         serviceNameLabel.setFont(fontLabel);
-        serviceNameLabel.setBounds(20,356,138,25);
+        serviceNameLabel.setBounds(600,115,200,25);
         serviceNameLabel.setForeground(Color.black);
 
         JLabel feePerHourLabel = new JLabel();
         feePerHourLabel.setText("Fee/hr:");
         feePerHourLabel.setFont(fontLabel);
-        feePerHourLabel.setBounds(20,437,138,25);
+        feePerHourLabel.setBounds(600,193,138,25);
         feePerHourLabel.setForeground(Color.black);
 
         JLabel hoursOfServiceLabel = new JLabel();
         hoursOfServiceLabel.setText("Service Hour(s):");
         hoursOfServiceLabel.setFont(fontLabel);
-        hoursOfServiceLabel.setBounds(20,520,200,25);
+        hoursOfServiceLabel.setBounds(600,274,200,25);
         hoursOfServiceLabel.setForeground(Color.black);
 
         JLabel totalLabel = new JLabel();
@@ -117,21 +117,21 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
 
         JTextField inputServiceName = new JTextField();
         inputServiceName.setToolTipText("Enter Service Name:");
-        inputServiceName.setBounds(20, 390,355,42);
+        inputServiceName.setBounds(600, 145,355,42);
         inputServiceName.setFont(inputFont);
         inputServiceName.setBackground(new Color(217,217,217));
         inputServiceName.setBorder(null);
 
         JTextField inputFee = new JTextField();
         inputFee.setToolTipText("Enter Fee:");
-        inputFee.setBounds(20, 470,355,42);
+        inputFee.setBounds(600, 224,355,42);
         inputFee.setFont(inputFont);
         inputFee.setBackground(new Color(217,217,217));
         inputFee.setBorder(null);
 
         JTextField inputHours = new JTextField();
         inputHours.setToolTipText("Enter Hours:");
-        inputHours.setBounds(20, 555,355,42);
+        inputHours.setBounds(600, 310,355,42);
         inputHours.setFont(inputFont);
         inputHours.setBackground(new Color(217,217,217));
         inputHours.setBorder(null);
@@ -139,19 +139,29 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
 
         //CALCULATE BUTTON
         JButton calculateButton = new JButton();
-        calculateButton.setText("Calculate Total Sales");
-        calculateButton.setFont(new Font("Helvetica", Font.PLAIN,36));
-        calculateButton.setBounds(20,630,355,70);
+        calculateButton.setText("Total Sales");
+        calculateButton.setFont(new Font("Helvetica", Font.PLAIN,14));
+        calculateButton.setBounds(385,310,120,40);
         calculateButton.setBorder(new LineBorder(Color.blue));
-        calculateButton.setBackground(Color.BLACK);
+        calculateButton.setBackground(new Color(0,102,51));
         calculateButton.setForeground(Color.white);
-
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
         });
+
+
+        JButton calculateServiceFeesBtn = new JButton();
+        calculateServiceFeesBtn.setText("Total Fees");
+        calculateServiceFeesBtn.setBounds(960,310,120,40);
+        calculateServiceFeesBtn.setFont(new Font("Helvetica", Font.PLAIN,14));
+        calculateServiceFeesBtn.setBorder(new LineBorder(Color.blue));
+        calculateServiceFeesBtn.setForeground(Color.white);
+        calculateServiceFeesBtn.setBackground(new Color(0,102,51));
+
+
 
         //RESET BUTTON
         JButton resetButton = new JButton();
@@ -163,16 +173,29 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         resetButton.addActionListener(new ActionListener() {// When the action is performed the textfield reverts back to empty
             @Override
             public void actionPerformed(ActionEvent e) {
-                inputServiceName.setText("");
                 inputPhoneName.setText("");
                 inputPrice.setText("");
-                inputHours.setText("");
                 inputQuantity.setText("");
-                inputFee.setText("");
             }
-
         });
+
+        JButton resetFeesBtn = new JButton();
+        resetFeesBtn.setBounds(856,115,100,25);
+        resetFeesBtn.setText("RESET");
+        resetFeesBtn.setBackground(Color.black);
+        resetFeesBtn.setForeground(Color.white);
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inputHours.setText("");
+                inputFee.setText("");
+                inputServiceName.setText("");
+            }
+        });
+
         // ADD COMPONENTS TO THE FRAME
+        frame.add(resetFeesBtn);
+        frame.add(calculateServiceFeesBtn);
         frame.add(resetButton);
         frame.add(calculateButton);
         frame.add(inputPhoneName);
