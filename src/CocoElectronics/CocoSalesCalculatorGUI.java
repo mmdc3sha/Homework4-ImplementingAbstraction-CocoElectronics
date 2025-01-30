@@ -1,12 +1,10 @@
 package CocoElectronics;
-
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
 
     public CocoSalesCalculatorGUI(){
@@ -21,7 +19,6 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         frame.setLayout(null);
         frame.getContentPane().setBackground(new Color(255,255,255));
         frame.setResizable(false);
-
 
         //PANEL FOR HEADER
         JPanel panel = new JPanel();
@@ -163,10 +160,15 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double phonePrice = Double.parseDouble(inputPrice.getText());
-                int phoneQuantity = Integer.parseInt(inputQuantity.getText());
-                double phoneTotal = phonePrice * phoneQuantity;
-                phoneSalesModel.addRow(new Object[]{inputPhoneName.getText(), phonePrice, phoneQuantity, phoneTotal});
+                try {
+                    double phonePrice = Double.parseDouble(inputPrice.getText());
+                    int phoneQuantity = Integer.parseInt(inputQuantity.getText());
+                    double phoneTotal = phonePrice * phoneQuantity;
+                    phoneSalesModel.addRow(new Object[]{inputPhoneName.getText(), phonePrice, phoneQuantity, phoneTotal});
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Enter a decimal number for the price and A whole number for the Quantity. ");
+                }
+
             }
         });
 
@@ -181,10 +183,15 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         calculateServiceFeesBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double serviceFee = Double.parseDouble(inputFee.getText());
-                double serviceHours = Double.parseDouble(inputHours.getText());
-                double serviceTotal = serviceFee * serviceHours;
-                serviceFeesModel.addRow(new Object[]{inputServiceName.getText(), serviceFee, serviceHours, serviceTotal});
+                try {
+                    double serviceFee = Double.parseDouble(inputFee.getText());
+                    double serviceHours = Double.parseDouble(inputHours.getText());
+                    double serviceTotal = serviceFee * serviceHours;
+                    serviceFeesModel.addRow(new Object[]{inputServiceName.getText(), serviceFee, serviceHours, serviceTotal});
+                } catch (NumberFormatException ex) {
+                    String message = "<html><body><p style='color:red;'>Failed:</p> <p>Enter a decimal number for <b>Fee</b> and <b>Service Hours</b>.</p></body></html>";
+                    JOptionPane.showMessageDialog(null, message, "Input Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 

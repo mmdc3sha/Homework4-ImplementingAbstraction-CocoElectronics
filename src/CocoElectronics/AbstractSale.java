@@ -1,5 +1,4 @@
 package CocoElectronics;
-
 abstract class AbstractSale extends CocoSalesCalculator {
     public AbstractSale(String phoneName, double phonePrice, int quantitySold, String serviceName, double feePerHour, double serviceHours) {
         super(phoneName, phonePrice, quantitySold, serviceName, feePerHour, serviceHours);

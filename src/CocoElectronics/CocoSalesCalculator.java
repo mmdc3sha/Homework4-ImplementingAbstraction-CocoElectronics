@@ -1,5 +1,4 @@
 package CocoElectronics;
-
 abstract class CocoSalesCalculator {
     protected String phoneName;
     protected double phonePrice;

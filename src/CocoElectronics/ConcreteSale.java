@@ -1,5 +1,4 @@
 package CocoElectronics;
-
 public class ConcreteSale extends AbstractSale {
     public ConcreteSale(String phoneName, double phonePrice, int quantitySold, String serviceName, double feePerHour, int serviceHours) {
         super(phoneName, phonePrice, quantitySold, serviceName, feePerHour, serviceHours);

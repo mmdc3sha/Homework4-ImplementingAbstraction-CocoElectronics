@@ -11,6 +11,6 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         // Name of Application: Coco Electronics
-        SwingUtilities.invokeLater(()-> new CocoSalesCalculatorGUI()); // Displays CocoElectronics.CocoSalesCalculatorGUI
+        SwingUtilities.invokeLater(()-> new CocoSalesCalculatorGUI()); //CocoSalesCalculatorGUI
     }
 }
