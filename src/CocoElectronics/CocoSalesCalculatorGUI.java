@@ -166,7 +166,8 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
                     double phoneTotal = phonePrice * phoneQuantity;
                     phoneSalesModel.addRow(new Object[]{inputPhoneName.getText(), phonePrice, phoneQuantity, phoneTotal});
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Enter a decimal number for the price and A whole number for the Quantity. ");
+                    String message = "<html><body style='font-family: Helvetica;'><p style='color:red;'>Failed:</p> <p>Enter a decimal number for <b>Fee</b> and <b>Service Hours</b>.</p></body></html>";
+                    JOptionPane.showMessageDialog(null, message, "Input Error", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
