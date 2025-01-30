@@ -19,6 +19,8 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         frame.setLayout(null);
         frame.getContentPane().setBackground(new Color(255,255,255));
         frame.setResizable(false);
+        ImageIcon icon = new ImageIcon("src/CocoElectronics/icon.png");
+        frame.setIconImage(icon.getImage());
 
         //PANEL FOR HEADER
         JPanel panel = new JPanel();
