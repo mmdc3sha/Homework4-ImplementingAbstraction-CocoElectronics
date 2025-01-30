@@ -2,6 +2,7 @@ package CocoElectronics;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,8 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
         frame.getContentPane().setBackground(new Color(255,255,255));
-        frame.setResizable(true);
+        frame.setResizable(false);
+
 
         //PANEL FOR HEADER
         JPanel panel = new JPanel();
@@ -136,8 +138,21 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         inputHours.setBackground(new Color(217,217,217));
         inputHours.setBorder(null);
 
+        //TABLE FOR PHONE SALES
+        String[] phoneSalesColumns = {"Phone Name", "Price", "Quantity Sold", "Total"};
+        DefaultTableModel phoneSalesModel = new DefaultTableModel(phoneSalesColumns, 0);
+        JTable phoneSalesTable = new JTable(phoneSalesModel);
+        JScrollPane phoneSalesScrollPane = new JScrollPane(phoneSalesTable);
+        phoneSalesScrollPane.setBounds(20, 400, 550, 330);
 
-        //CALCULATE BUTTON
+        // Service Fees Table
+        String[] serviceFeesColumns = {"Service Name", "Fee/hr", "Service Hours", "Total"};
+        DefaultTableModel serviceFeesModel = new DefaultTableModel(serviceFeesColumns, 0);
+        JTable serviceFeesTable = new JTable(serviceFeesModel);
+        JScrollPane serviceFeesScrollPane = new JScrollPane(serviceFeesTable);
+        serviceFeesScrollPane.setBounds(600, 400, 520, 330);
+
+        //CALCULATE PHONE SALES BUTTON
         JButton calculateButton = new JButton();
         calculateButton.setText("Total Sales");
         calculateButton.setFont(new Font("Helvetica", Font.PLAIN,14));
@@ -148,7 +163,10 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                double phonePrice = Double.parseDouble(inputPrice.getText());
+                int phoneQuantity = Integer.parseInt(inputQuantity.getText());
+                double phoneTotal = phonePrice * phoneQuantity;
+                phoneSalesModel.addRow(new Object[]{inputPhoneName.getText(), phonePrice, phoneQuantity, phoneTotal});
             }
         });
 
@@ -160,6 +178,15 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         calculateServiceFeesBtn.setBorder(new LineBorder(Color.blue));
         calculateServiceFeesBtn.setForeground(Color.white);
         calculateServiceFeesBtn.setBackground(new Color(0,102,51));
+        calculateServiceFeesBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double serviceFee = Double.parseDouble(inputFee.getText());
+                double serviceHours = Double.parseDouble(inputHours.getText());
+                double serviceTotal = serviceFee * serviceHours;
+                serviceFeesModel.addRow(new Object[]{inputServiceName.getText(), serviceFee, serviceHours, serviceTotal});
+            }
+        });
 
 
 
@@ -194,7 +221,6 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         });
 
         // ADD COMPONENTS TO THE FRAME
-        frame.add(resetFeesBtn);
         frame.add(calculateServiceFeesBtn);
         frame.add(resetButton);
         frame.add(calculateButton);
@@ -213,6 +239,8 @@ public class CocoSalesCalculatorGUI extends CocoSalesCalculator{
         frame.add(totalLabel);
         frame.add(priceLabel);
         frame.add(panel);
+        frame.add(phoneSalesScrollPane);
+        frame.add(serviceFeesScrollPane);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
